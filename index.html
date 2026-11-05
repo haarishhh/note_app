@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+</head>
+<body>
+
+    <form class="student-detail">
+        <input type="text" name="Username" placeholder="Enter Your Name" id="Username" required>
+
+        <input type="number" name="Age" placeholder="Enter Your Age" id="age" required>
+
+        <input type="email" name="Email" placeholder="Enter Your Email" id="email" required>
+
+        <button type="submit" class="onsubmit">Submit</button>
+    </form>
+
+    <div class="savenotes"></div>
+
+    <script>
+        let studentDetail = document.querySelector(".student-detail");
+        let savenotes = document.querySelector(".savenotes");
+
+        let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+        function createStudentDetail() {
+            savenotes.innerHTML = "";
+
+            notes.forEach((item, index) => {
+                savenotes.innerHTML += `
+                    <div class="record">
+                        <h3>${item.Username}</h3>
+                        <p>${item.Age}</p>
+                        <p>${item.email}</p>
+
+                        <div class="btn">
+                            <button type="button" class="btn-delete"
+                                onclick="deleteData(${index})">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        studentDetail.onsubmit = function(e) {
+            e.preventDefault();
+
+            let Username = document.getElementById("Username").value;
+            let Age = document.getElementById("age").value;
+            let email = document.getElementById("email").value;
+
+            notes.push({ Username, Age, email });
+
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            studentDetail.reset();
+
+            createStudentDetail();
+        };
+
+        function deleteData(index) {
+            notes.splice(index, 1);
+
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            createStudentDetail();
+        }
+
+        createStudentDetail();
+    </script>
+
+</body>
+</html>

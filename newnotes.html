@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" />
+>i
+
+<script src="./main.js"></script>
+    <style>
+      
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #808486;
+     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.form-container{
+    width: 500px;
+    background-color:white ;
+    padding: 30px;
+    position: relative;
+    border-radius: 10px;
+}
+
+
+
+.form-container input[type="text"],
+.form-container textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+
+.form-container p {
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+
+
+.form-container button[type="submit"] {
+    display: block;
+    width: 130px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px auto 0;
+    background-color: rgb(177, 151, 252);
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+a {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 30px;   
+} 
+.category{
+    margin-top: 12px;
+}
+
+        
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form id="newnotes">
+        <input
+          type="text"
+          id="noteId"
+          placeholder="Enter Your Id"
+          maxlength="5"
+          required
+        />
+        <input type="text" id="title" placeholder="Title" required />
+        <textarea name="" id="description" placeholder="Description"></textarea>
+
+        <p><strong>Priority</strong></p>
+
+        <input type="radio" id="high" name="priority" value="High" required />
+        <label for="high">High</label>
+
+        <input type="radio" id="medium" name="priority" value="Medium" />
+        <label for="medium">Medium</label>
+
+        <input type="radio" id="low" name="priority" value="Low" />
+        <label for="low">Low</label>
+
+        <p class="category">
+          <label for="category"><strong>Category</strong></label>
+        </p>
+
+        <select name="category" id="category" required>
+          <option value="">Select Category</option>
+          <option value="Work">Work</option>
+          <option value="Study">Study</option>
+          <option value="Personal">Personal</option>
+        </select>
+
+        <br /><br />
+        <a href=""><i class="fa-solid fa-circle-xmark fa-canvas-roomy" id="closeBtn" style="color: red;"></i>
+</a>
+        <button type="submit" >Create Note</button>
+        <button type="reset">Clear Form</button>
+      </form>
+    </div>
+  </body>
+</html>
